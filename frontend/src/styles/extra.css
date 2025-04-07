@@ -1,0 +1,314 @@
+/*zahra Css global*/
+/* Importation des polices Google */
+@import url("https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mr+De+Haviland&family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Mr+De+Haviland&family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=Dancing+Script:wght@400..700&family=Mr+De+Haviland&family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+/* Importation des styles Tailwind CSS */
+
+@import "tailwindcss";
+
+/* Définition des couleurs personnalisées et des styles de base */
+@layer base {
+  :root {
+    --sand: #e8c791;
+    --peach: #fae1a8;
+    --caramel: #d1a26f;
+    --chocolate: #b58d6e;
+    --ivory: #d8beb1;
+    --off-white: #f4f0ed;
+    --teal-dark: #116769;
+    --forest-green: #064236;
+    --gray: #2b2f2e;
+    --white: #f5f7f7;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Styles de base pour le body */
+  /*body {
+    
+    background-color: var(--white);
+    color: var(--forest-green);
+  }*/
+
+  /* Styles pour les titres */
+  /*h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+    color: var( --teal-dark);
+  }*/
+
+  /* Styles pour les paragraphes */
+  /*p {
+    font-family: 'Outfit', sans-serif;
+    color: var(--gray);
+  }*/
+}
+
+/* Définition des classes de composants personnalisés */
+@layer components {
+  .font-tan-angleton {
+    font-family: "Playfair Display", serif;
+  }
+
+  .font-haute-couture {
+    font-family: "Spectral", serif;
+  }
+
+  .font-karia {
+    font-family: "Dancing Script", cursive;
+  }
+
+  /* Styles pour les liens de la Navbar */
+  .navbar-link a {
+    color: var(--teal-dark) !important;
+    font-family: "Playfair Display", serif !important;
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+
+  .navbar-link:hover a {
+    color: var(--forest-green) !important;
+  }
+
+  .navbar-link a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--caramel);
+    transition: width 0.3s ease;
+  }
+
+  .navbar-link a:hover::after {
+    width: 100%;
+  }
+
+  /* Styles pour les boutons */
+  .button {
+    padding: 0.75rem 1.5rem;
+    border-radius: 5rem;
+    font-family: "Spectral", serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+  }
+
+  .a {
+    background-color: var(--teal-dark);
+    color: var(--off-white);
+  }
+
+  .button-primary:hover {
+    background-color: var(--forest-green);
+  }
+
+  .button-secondary {
+    background-color: var(--caramel);
+    color: var(--off-white);
+  }
+
+  .button-secondary:hover {
+    background-color: var(--chocolate);
+  }
+}
+
+.bg-caramel {
+  background-color: var(--caramel);
+}
+/* Dans votre fichier global de CSS (si nécessaire) */
+@media (max-width: 1024px) {
+  .navbar-link {
+    padding: 10px 0;
+  }
+}
+
+@layer utilities {
+  .bg-ivory {
+    background-color: var(--ivory);
+  }
+  .bg-ivory-90 {
+    background-color: rgba(216, 190, 177, 0.9);
+  } /* 90% opaque */
+  .bg-ivory-75 {
+    background-color: rgba(216, 190, 177, 0.75);
+  } /* 75% opaque */
+  .bg-ivory-50 {
+    background-color: rgba(216, 190, 177, 0.5);
+  } /* 50% opaque */
+  .bg-ivory-25 {
+    background-color: rgba(216, 190, 177, 0.25);
+  } /* 25% opaque */
+}
+@layer utilities {
+  .bg-sand {
+    background-color: var(--sand);
+  }
+  .bg-peach {
+    background-color: var(--peach);
+  }
+  .bg-caramel {
+    background-color: var(--caramel);
+  }
+  .bg-chocolate {
+    background-color: var(--chocolate);
+  }
+  .bg-ivory {
+    background-color: var(--ivory);
+  }
+  .bg-off-white {
+    background-color: var(--off-white);
+  }
+  .bg-teal-dark {
+    background-color: var(--teal-dark);
+  }
+  .bg-forest-green {
+    background-color: var(--forest-green);
+  }
+  .bg-gray {
+    background-color: var(--gray);
+  }
+  .bg-white {
+    background-color: var(--white);
+  }
+
+  .text-sand {
+    color: var(--sand);
+  }
+  .text-peach {
+    color: var(--peach);
+  }
+  .text-caramel {
+    color: var(--caramel);
+  }
+  .text-chocolate {
+    color: var(--chocolate);
+  }
+  .text-ivory {
+    color: var(--ivory);
+  }
+  .text-off-white {
+    color: var(--off-white);
+  }
+  .text-teal-dark {
+    color: var(--teal-dark);
+  }
+  .text-forest-green {
+    color: var(--forest-green);
+  }
+  .text-gray {
+    color: var(--gray);
+  }
+  .text-white {
+    color: var(--white);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease-out;
+}
+
+@keyframes bounce-on-hover {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-bounce-on-hover:hover {
+  animation: bounce-on-hover 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  /* 📌 Réduit la hauteur du footer et l'espacement sur mobile */
+  footer {
+    padding: 16px 0;
+  }
+
+  /* 📌 Réduit l'espacement entre les colonnes */
+  footer .grid {
+    gap: 12px;
+  }
+
+  /* 📌 Réduit la taille des titres */
+  footer h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  /* 📌 Réduit la taille des paragraphes */
+  footer p {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+
+  /* 📌 Réduit la taille des liens */
+  footer a {
+    font-size: 13px;
+  }
+
+  /* 📌 Icônes sociales plus petites */
+  footer .space-x-4 {
+    gap: 6px;
+  }
+
+  footer .p-3 {
+    padding: 5px;
+  }
+
+  footer .text-xl {
+    font-size: 16px;
+  }
+
+  /* 📌 Espacement réduit pour la barre du bas */
+  footer .border-t {
+    margin-top: 8px;
+    padding-top: 6px;
+    font-size: 11px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.4s ease-out;
+}
+/* Hover sur les icônes Lightbox */
+.yarl__icon {
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.yarl__icon:hover {
+  transform: scale(1.2);
+  filter: brightness(1.3);
+}

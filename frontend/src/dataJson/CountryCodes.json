@@ -1,0 +1,48 @@
+{
+    "countryCodes": [
+      { "code": "+49", "name": "Deutschland" },
+      { "code": "+1", "name": "USA" },
+      { "code": "+33", "name": "Frankreich" },
+      { "code": "+44", "name": "Großbritannien" },
+      { "code": "+39", "name": "Italien" },
+      { "code": "+34", "name": "Spanien" },
+      { "code": "+86", "name": "China" },
+      { "code": "+91", "name": "Indien" },
+      { "code": "+55", "name": "Brasilien" },
+      { "code": "+81", "name": "Japan" },
+      { "code": "+61", "name": "Australien" },
+      { "code": "+1", "name": "Kanada" },
+      { "code": "+7", "name": "Russland" },
+      { "code": "+82", "name": "Südkorea" },
+      { "code": "+31", "name": "Niederlande" },
+      { "code": "+46", "name": "Schweden" },
+      { "code": "+41", "name": "Schweiz" },
+      { "code": "+43", "name": "Österreich" },
+      { "code": "+32", "name": "Belgien" },
+      { "code": "+45", "name": "Dänemark" }
+    ],
+    
+    "countries": [
+      { "code": "DE", "name": "Deutschland" },
+      { "code": "US", "name": "USA" },
+      { "code": "FR", "name": "Frankreich" },
+      { "code": "GB", "name": "Großbritannien" },
+      { "code": "IT", "name": "Italien" },
+      { "code": "ES", "name": "Spanien" },
+      { "code": "CN", "name": "China" },
+      { "code": "IN", "name": "Indien" },
+      { "code": "BR", "name": "Brasilien" },
+      { "code": "JP", "name": "Japan" },
+      { "code": "AU", "name": "Australien" },
+      { "code": "CA", "name": "Kanada" },
+      { "code": "RU", "name": "Russland" },
+      { "code": "KR", "name": "Südkorea" },
+      { "code": "NL", "name": "Niederlande" },
+      { "code": "SE", "name": "Schweden" },
+      { "code": "CH", "name": "Schweiz" },
+      { "code": "AT", "name": "Österreich" },
+      { "code": "BE", "name": "Belgien" },
+      { "code": "DK", "name": "Dänemark" }
+    ]
+  }
+  

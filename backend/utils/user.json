@@ -1,0 +1,64 @@
+[
+  {
+    "vorname": "Max",
+    "nachname": "Müller",
+    "email": "max.mueller@gmail.com",
+    "password": "Max2024!"
+  },
+  {
+    "vorname": "Anna",
+    "nachname": "Schmidt",
+    "email": "anna.schmidt@yahoo.com",
+    "password": "Anna@2024"
+  },
+  { 
+    "vorname": "Lukas",
+    "nachname": "Weber",
+    "email": "lukas.weber@outlook.com",
+    "password": "Lukas@123"
+  },
+  {
+    "vorname": "Sophia",
+    "nachname": "Koch",
+    "email": "sophia.koch@gmail.com",
+    "password": "Sophia!456"
+  },   
+  {
+    "vorname": "Felix",
+    "nachname": "Bauer",
+    "email": "felix.bauer@hotmail.com",
+    "password": "Felix789$"
+  },
+  {
+    "vorname": "Emma",
+    "nachname": "Wagner",
+    "email": "emma.wagner@yahoo.de",
+    "password": "Emma%321"
+  },
+  {
+    "vorname": "Jonas",
+    "nachname": "Becker",
+    "email": "jonas.becker@gmail.com",
+    "password": "Jonas&654"
+  },
+  {
+    "vorname": "Laura",
+    "nachname": "Hoffmann",
+    "email": "laura.hoffmann@outlook.de",
+    "password": "Laura*987"
+  },
+  {
+    "vorname": "Paul",
+    "nachname": "Schwarz",
+    "email": "paul.schwarz@web.de",
+    "password": "Paul@135"
+  },
+  {
+    "vorname": "Mia",
+    "nachname": "Neumann",
+    "email": "mia.neumann@t-online.de",
+    "password": "Mia!2467"
+  }
+]
+
+

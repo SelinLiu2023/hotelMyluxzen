@@ -1,0 +1,22 @@
+[
+  {
+    "title": "MyLuxzen",
+    "description": "MyLuxzen ist eine exklusive Plattform für die Buchung von Luxusferienwohnungen. Genießen Sie einen luxuriösen Aufenthalt an den schönsten Reisezielen. Unser Ziel ist es, Ihnen unvergessliche Erlebnisse in den exklusivsten Unterkünften zu bieten, die nur das Beste für Sie bereithalten.",
+    "image": "/src/assets/aboutUsImg/aboutUsBild.jpg"
+  },
+  {
+    "title": "Über MyLuxzen",
+    "description": "Bei MyLuxzen finden Sie nicht nur eine Unterkunft, sondern ein Erlebnis. Wir bieten handverlesene Luxusvillen und exklusive Resorts an, die Ihnen den höchsten Komfort und erstklassigen Service bieten. Jede unserer Unterkünfte wurde sorgfältig ausgewählt, um Ihnen das Gefühl von Ruhe und Luxus zu vermitteln, während Sie gleichzeitig an atemberaubenden Reisezielen verweilen. Unser Team ist stets bemüht, Ihre Wünsche zu erfüllen und Ihre Erwartungen zu übertreffen – damit Sie sich während Ihres Aufenthalts bei uns vollkommen entspannen können.",
+    "image": "/src/assets/aboutUsImg/aboutUsBild-2.png"
+  },
+  {
+    "title": "Unsere Häuser und Unterkünfte",
+    "description": "Unsere exklusiven Häuser und Villen wurden mit Liebe zum Detail ausgewählt. Jedes Haus bietet nicht nur Luxus, sondern auch atemberaubende Ausblicke und erstklassigen Service. Wir bieten verschiedene Arten von Ferienhäusern, die auf Ihre individuellen Bedürfnisse zugeschnitten sind. Von modernen Luxusvillen bis zu traditionellen, charmanten Unterkünften haben wir für jedes Paar oder jede Familie die perfekte Option. Unsere Luxusvillen verfügen über private Pools, exklusive Strandhäuser, erstklassige Spas und elegante Innenräume mit großzügigen Wohnbereichen.",
+    "image": "/src/assets/aboutUsImg/aboutUsBild-6.jpg"
+  },
+  {
+    "title": "Warum MyLuxzen?",
+    "description": "Wir von MyLuxzen haben es uns zur Aufgabe gemacht, Ihnen nicht nur eine Unterkunft zu bieten, sondern ein einzigartiges Erlebnis. Unsere persönliche Beratung und maßgeschneiderten Angebote stellen sicher, dass Ihr Aufenthalt perfekt auf Ihre Wünsche abgestimmt ist. Mit unserem 24/7 Concierge-Service stehen wir Ihnen jederzeit zur Verfügung, um Ihre Bedürfnisse zu erfüllen. Unsere handverlesenen Unterkünfte bieten luxuriöse Ausstattung und exklusive Annehmlichkeiten, die höchsten Komfort garantieren. Darüber hinaus erwarten Sie unvergessliche Erlebnisse und zahlreiche Aktivitäten in der Umgebung, die Ihren Aufenthalt zu etwas ganz Besonderem machen.",
+    "image": "/src/assets/aboutUsImg/first.webp"
+  }
+]
