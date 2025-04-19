@@ -26,14 +26,20 @@ const [confirmVisible, setConfirmVisible] = useState(false);
         }
       }, [statusMessage]);
       
-    const fetchImages = async () => {
+      const fetchImages = async () => {
         try {
-            const res = await axios.get(`${API_URL}/api/images`);
-            setImages(res.data);
+          const res = await axios.get(`${API_URL}/api/images`);
+          console.log("Daten von Backend:", res.data);
+      
+          // 💡 Vérifie si c'est un tableau, sinon donne un tableau vide
+          const imageArray = Array.isArray(res.data) ? res.data : res.data.images || [];
+          setImages(imageArray);
         } catch (err) {
-            console.error("Fehler beim Laden der Bilder:", err);
+          console.error("Fehler beim Laden der Bilder:", err);
+          setImages([]); // éviter l'erreur de map si la requête échoue
         }
-    };
+      };
+      
 
     const handleUpload = async () => {
         if (!file) {

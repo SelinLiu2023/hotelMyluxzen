@@ -68,6 +68,9 @@ export const AdminSingleHouseQueryPage = ()=>{
     })
     return (
     <>
+        <h2 className="text-4xl font-extrabold text-gray-800 mb-10 text-center">
+            Häuseranfrage
+        </h2>
         <SingleHouseQueryForm handleSearch={handleSearch}/>
         { showQueryResults && (
             <SingleHouseQueryResults results={results} 

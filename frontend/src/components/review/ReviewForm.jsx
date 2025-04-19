@@ -89,7 +89,8 @@ export function ReviewForm({ onReviewAdded, onClose }) {
 
   return (
     <div className="container mx-auto px-4">
-      <div className="relative p-6 bg-white shadow rounded-lg w-500 max-w-lg mx-auto">
+      {/* <div className="relative p-6 bg-white shadow rounded-lg w-500 max-w-lg mx-auto"> */}
+      <div className="relative p-4 bg-white shadow rounded-lg w-full max-w-lg mx-auto max-h-[90vh] overflow-y-auto">
         {success && (
           <div className="bg-green-500 text-white p-2 mb-4">
             Your review request was sent successfully!

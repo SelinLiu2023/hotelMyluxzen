@@ -5,16 +5,16 @@ import { formatLocalDateWithYear } from "../../utils/commenBookFunc.js";
 
 export const Summery = ({ newBooking, completed })=>{
     return (
-    <div className="bg-white w-full p-4 border rounded-lg shadow border-gray-300 text-gray-500">
+    <div className="bg-white w-full p-4 border rounded-lg shadow border-gray-300 text-gray-500 max-h-[70vh] overflow-y-auto md:max-h-none md:overflow-visible">
         <div className="text-xl py-2 text-gray-700 font-bold">
-            Reservierungszusammenfassung
+            Summary
         </div>
         <div className="border-t border-gray-200 my-4"></div>
         { newBooking.houseType ? (
             <>
             { completed && (
                 <div>
-                    <div className="text-gray-700 flex pt-4 flex justify-between">
+                    <div className="text-gray-700 flex flex-col pt-4 flex justify-between">
                     <p>Buchungs-Ticketnummer : </p>
                     <p> {newBooking.bookingNumber}</p>
                     </div>
@@ -36,13 +36,13 @@ export const Summery = ({ newBooking, completed })=>{
                 <div>
                     <div className="flex justify-between">
                         <div>{formatLocalDateWithYear(newBooking.startDate)} - {formatLocalDateWithYear(newBooking.endDate)}</div>
-                        { newBooking.totalDays} {newBooking.totalDays === 1 ? "Tag" : "Tage" }
                     </div>
+                    <p>{ newBooking.totalDays} {newBooking.totalDays === 1 ? "Tag" : "Tage" }</p>
                     <p><span className="text-sm">Check in Uhrzeit: </span>14:00</p>
                     <p><span className="text-sm">Check out Uhrzeit: </span>11:00</p>
                 </div>
             )}
-            <div>{newBooking.guestCount} Gast{newBooking.guestCount > 1 ? "e" : ""}</div>
+            <div className="text-gray-700">{newBooking.guestCount} Gast{newBooking.guestCount > 1 ? "e" : ""}</div>
             <div className="border-t border-gray-200 my-4"/>
             <div className="break-words overflow-wrap max-w-100">
                 <p className="text-gray-700">Gastinformationen: </p>

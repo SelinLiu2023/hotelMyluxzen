@@ -7,25 +7,26 @@ export const HouseTypeCard = ({ house, onClick, selected=false}) => {
   console.log("selected",selected )
   return (
     <div onClick={() => onClick(house)}
-      className={`shadow-lg rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 cursor-pointer mb-6 flex items-center w-full max-w-6xl mx-auto p-4 sm:flex-col md:flex-row ${selected ? "custom-bg-seletedHouseCard-color border border-[#064236]":"bg-white"}`}
+      className={`bg-white shadow-lg rounded-2xl overflow-hidden transform transition duration-300 hover:scale-105 cursor-pointer mb-6 flex items-center w-full max-w-6xl mx-auto p-4 flex-col md:flex-row ${selected ? "custom-bg-seletedHouseCard-color border border-[#064236]":"bg-white"}`}
     >
       <img
         src={house.images[0]}
         alt={house.title}
-        className="w-32 h-32 max-w-1/2 sm:w-48 sm:h-48 md:w-65 md:h-65 object-cover rounded-lg mr-4 mb-4 md:mb-0"
+        className="w-32 h-32 sm:w-48 sm:h-48 md:w-65 md:h-65 object-cover rounded-lg mr-4 mb-4 md:mb-0"
       />
       <div className="flex-1">
-        <h2 className="text-2xl font-semibold text-gray-600 ">
+        <h2 className="text-2xl font-semibold text-gray-600 w-[260px] md:w-auto">
           {house.title}
         </h2>
         {/* Beschreibung nur auf größeren Geräten anzeigen */}
-        <p className="text-gray-600 mt-2 hidden sm:block text-sm">
+        <p className="text-gray-600 mt-2 hidden sm:block">
           {house.description}
         </p>
-        <div className="flex justify-between items-center mt-4 ">
-          <div className="text-gray-600 text-sm sm:text-base flex-1">
+
+        <div className="flex justify-between items-center mt-4">
+          <div className="text-gray-600 text-sm sm:text-base md:flex-1">
             <p className="text-sm">max.<span className="font-semibold"> {house.guests}</span> Gäste</p>
-            <p className="text-sm"> <span className="font-semibold">{house.bedrooms}</span>             Schlafzimmer</p>
+            <p className="text-sm"> <span className="font-semibold">{house.bedrooms}</span> Schlafzimmer</p>
               <p className="text-sm"><span className="font-semibold">{house.bathroom}</span> Bäder</p>
           </div>
           <p className="text-sm sm:text-base md:text-lg lg:text-base font-bold text-[#116769]">
@@ -54,11 +55,12 @@ export const HouseTypeModal = ({ house, onClose }) => {
   return (
     <div 
       onClick={handleCloseOnBackgroundClick}
-      className="fixed inset-0 flex justify-center items-center p-6 z-50"
+      className="fixed inset-0 flex justify-center items-center p-6 pt-16 z-50"
       style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
     >
+      {/* add pt-16 to make modal not an top */}
       <div
-        className="bg-white bg-opacity-90 rounded-xl shadow-2xl w-full md:w-3/5   relative p-1 "
+        className="bg-white bg-opacity-90 rounded-xl shadow-2xl w-full md:w-3/5 relative p-1 "
         onClick={handleModalClick}
       >
         <div className="bg-gray-100 p-4 flex justify-between items-center border-b border-[#064236]">

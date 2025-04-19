@@ -21,8 +21,8 @@ export const Contact = ({ newBooking, setNewBooking, gotoNextStep, setStepComple
         }
     },[gotoNextStep]);
     return (
-    <div>
-        <div className="text-2xl py-2 text-gray-700 font-bold">
+    <div >
+        <div className="text-2xl mb-4 text-gray-700 font-bold">
             Ihre Kontaktdaten
         </div>
         <ContactForm 

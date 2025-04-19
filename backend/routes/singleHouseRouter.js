@@ -1,15 +1,16 @@
 import express from "express";
-import { querySingleHouses, houseCheckIn, houseSetBookInfo, getHousesforCheckinOrReserve, getHouseByNum, houseReservedByAdmin} from "../middlewares/singleHouseMW.js";
+import { querySingleHouses, houseCheckIn, houseSetBookInfo, getHousesforCheckin, getHousesforReserve, getHouseByNum, houseReservedByAdmin} from "../middlewares/singleHouseMW.js";
 import { bookingCheckin } from "../middlewares/bookingMW.js";
 
 const router = express.Router();
 router.get("/geHausByNum/:houseNum",[getHouseByNum], (req, res) => {
     res.status(200).json(req.result); 
 });
-router.post("/checkin-get-houses/:houseType",[houseCheckIn,getHousesforCheckinOrReserve], (req, res) => {
+router.post("/checkin-get-houses/:houseType",[houseCheckIn,getHousesforCheckin], (req, res) => {
     res.status(200).json(req.result); 
 });
-router.post("/reserve-get-houses/:houseType",[getHousesforCheckinOrReserve], (req, res) => {
+// modified for reserve and checkin different function
+router.post("/reserve-get-houses/:houseType",[getHousesforReserve], (req, res) => {
     res.status(200).json(req.result); 
 });
 router.put("/admin-reserve/:houseNum",[houseReservedByAdmin], (req, res) => {

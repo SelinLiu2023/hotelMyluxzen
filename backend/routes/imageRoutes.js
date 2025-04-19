@@ -67,13 +67,38 @@ cloudinary.config({
 
 const router = express.Router();
 
-// GET - Récupérer toutes les images
+// GET - Récupérer les images avec pagination
+// GET - Récupérer les images avec pagination et URL optimisée Cloudinary
 router.get("/", async (req, res) => {
   try {
-    const images = await Image.find().sort({ createdAt: -1 }); // Trier du plus récent au plus ancien
-    res.json(images);
+    // 1. Lire les paramètres de pagination dans l'URL
+    const page = parseInt(req.query.page) || 1;     // ex: /api/images?page=2
+    const limit = parseInt(req.query.limit) || 12;  // ex: /api/images?limit=12
+    const skip = (page - 1) * limit;                // combien d'éléments à sauter
+
+    // 2. Récupérer les images depuis MongoDB, triées par date de création (plus récentes d’abord)
+    const images = await Image.find()
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    // 3. Pour chaque image, on ajoute les paramètres f_auto,q_auto à l'URL Cloudinary
+    const optimizedImages = images.map((img) => ({
+      _id: img._id,
+      url: img.url.replace("/upload/", "/upload/f_auto,q_auto/"), // optimisation
+      description: img.description,
+    }));
+
+    // 4. Indique au frontend s’il reste des images à charger (pour scroll infini)
+    const hasMore = images.length === limit;
+
+    // 5. Réponse envoyée au frontend
+    res.json({
+      images: optimizedImages,  // tableau des images
+      hasMore: hasMore,         // booléen pour continuer ou non
+    });
   } catch (error) {
-    console.error(" Erreur serveur :", error);
+    console.error("Erreur serveur :", error);
     res.status(500).json({ message: "Erreur serveur" });
   }
 });

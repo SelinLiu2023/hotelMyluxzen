@@ -117,7 +117,7 @@ export const BookingPage = ()=>{
             <div>
                 <div className="pb-10 lg:px-6">
                     <ProcessBar step={step} setStep={setStep}/>
-                    <div  className="py-10 px-12 overflow-auto">
+                    <div  className="pb-10 pt-2 px-4 md:pt-6 md:px-12 overflow-auto">
                         <div onClick={e => e.stopPropagation()}
                             className="flex lg:flex-row w-full lg:space-x-10 min-h-screen"
                         >

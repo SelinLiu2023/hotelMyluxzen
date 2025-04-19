@@ -7,6 +7,11 @@ export function Payment() {
     setSelectedPayment(payment);
   };
   return (
+    <div>
+      <div className="text-2xl mb-4 text-gray-700 font-bold">
+          Zahlung
+      </div>
+
   <div className="w-full flex justify-center">
     <div className="w-2/3 flex flex-col items-start space-y-10 border rounded-lg shadow border-gray-300 px-8 py-8">
       <div className="flex items-center space-x-2 ">
@@ -46,6 +51,7 @@ export function Payment() {
         <span className="text-gray-700">Credit Card</span>
       </div>
     </div>
+  </div>
   </div>
   );
 }

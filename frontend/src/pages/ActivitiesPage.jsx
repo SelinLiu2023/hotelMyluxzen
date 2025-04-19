@@ -1,7 +1,8 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import activities from "../dataJson/activitiesData.json"; // Pfad anpassen
+//import activities from "../dataJson/activitiesData.json"; // Pfad anpassen
+import activities from "../dataJson/activitiesData"; 
 import faqData from "../dataJson/faqData.json";
 import mainBild from "../assets/imageNaheeda/main5.jpg"
 import { FaArrowLeft, FaArrowUp, FaEnvelope, FaPhoneAlt, FaChevronDown  } from "react-icons/fa";

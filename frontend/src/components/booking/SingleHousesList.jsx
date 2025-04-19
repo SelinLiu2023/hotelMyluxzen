@@ -13,7 +13,7 @@ export const SingleHousesList = ({houses,setNewBooking,newBooking})=>{
     };
     return (
     <div>
-        <div className="text-gray-500 border-t border-gray-100 my-4 w-full cursor-pointer "></div>
+        <div className="text-gray-500 border-t border-gray-100 my-2 w-full cursor-pointer "></div>
         <div className="flex">
             <select
                 value={selectedHouseNum}

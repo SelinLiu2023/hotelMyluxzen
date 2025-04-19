@@ -26,6 +26,14 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 app.use("/images", express.static(path.join(__dirname, "public", "images")));
+app.use("/uploads", express.static("uploads"));
+// 📌 Routes, Zahra
+
+//app.use(cookieParser()); //Add Cookieparser von Naheeda
+//app.use(express.json());
+app.use(express.json()); // ✅ JSON Body parsen
+app.use(express.urlencoded({ extended: true })); // ✅ Formulardaten parsen
+app.use(cookieParser());
 
 const allowedOrigins = [
   "https://myluxzen.onrender.com",
@@ -44,8 +52,8 @@ app.use(
     credentials: true,
   })
 );
-app.use(cookieParser()); //Add Cookieparser von Naheeda
-app.use(express.json());
+
+
 
 // Session-Middleware für Passport-google anmeldung
 app.use(
@@ -68,8 +76,7 @@ app.use("/booking", bookingRouter); //Xiangyu
 app.use("/singleHouse", singleHouseRouter); //Xiangyu
 
 // 📌 Servir les images statiques, Zahra
-app.use("/uploads", express.static("uploads"));
-// 📌 Routes, Zahra
+
 app.use("/api/images", imageRoutes);
 
 app.use("/api/auth", authRouter); // authRouter durch Naheeda hinzugefügt

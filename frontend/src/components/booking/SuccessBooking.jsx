@@ -46,14 +46,14 @@ export const SuccessBooking = ({successBookingNumber})=>{
     return (
       <>
       { errorMessage === "" ? ( 
-        <div className="flex flex-col items-center justify-center h-full pb-20">
-          <div className="w-2/3 py-4">
+        <div className="flex flex-col items-center justify-center h-full pb-20 ">
+          <div className="mx-2 w-4/5 md:w-2/3 py-4">
             <Summery 
               newBooking={bookingTicket} 
               completed={true}
             />
           </div>
-          <div className="w3/5 py-4 px-6 lg:px-20 text-gray-700">
+          <div className="mx-3 md:w-3/5 py-4 md:px-6 lg:px-20 text-gray-700 ">
               <p>Vielen Dank für Ihre Buchung.</p><br></br>
               <p>Die Details Ihrer Bestellung werden an Ihre E-Mail-Adresse gesendet.</p><br></br>
               <p>Falls Sie bereits registriert und angemeldet sind, können Sie Ihre Bestellung in Ihrem Benutzerkonto auf unserer Webseite einsehen und bei Bedarf auch stornieren.</p><br></br>

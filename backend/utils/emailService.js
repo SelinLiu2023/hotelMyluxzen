@@ -13,7 +13,7 @@ const __dirname = dirname(__filename);
 // Base URL nach Umgebung
 const BASE_URL =
   process.env.NODE_ENV === "production"
-    ? "https://myluxzen.com"
+    ? "https://myluxzen.onrender.com"
     : "http://localhost:5173";
 
 // GmailTransporter
@@ -25,17 +25,29 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-// Hauptfunktion zum Versenden von E-Mails
-export const sendEmailToClient = async ({ to, subject, text, bookingLink = null }) => {
-  // Link zum Kundenkonto 
-  const accountLink = `
-    <p style="margin-top: 20px;">
-      <a href="${BASE_URL}/account-booking?view=account" target="_blank" style="color:#116769; text-decoration: none;">
-        Hier klicken, um Ihre Reservierungen in Ihrem Konto zu verwalten
-      </a>
-    </p>`;
+// ✅ Hauptfunktion zum Versenden von E-Mails – mit hasAccount & Debug
+export const sendEmailToClient = async ({
+  to,
+  subject,
+  text,
+  bookingLink = null,
+  hasAccount = false, // neu
+}) => {
+  console.log("Sende E-Mail an:", to);
+  console.log("Subject:", subject);
+  console.log("hasAccount:", hasAccount);
+  console.log("bookingLink:", bookingLink);
 
-  // Link zur Buchung oder zu allgemeiner Buchungsseite
+  // Nur anzeigen, wenn Nutzer ein Konto hat
+  const accountLink = hasAccount
+    ? `<p style="margin-top: 20px;">
+        <a href="${BASE_URL}/account-booking?view=account" target="_blank" style="color:#116769; text-decoration: none;">
+          Hier klicken, um Ihre Reservierungen in Ihrem Konto zu verwalten
+        </a>
+      </p>`
+    : "";
+
+  // Link zur Buchung oder allgemeiner Seite
   const linkToUse = bookingLink
     ? bookingLink.replace("http://localhost:5173", BASE_URL)
     : `${BASE_URL}/booking`;
@@ -51,7 +63,7 @@ export const sendEmailToClient = async ({ to, subject, text, bookingLink = null 
   const htmlTemplate = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 24px; color: #333;">
       <div style="text-align: center; margin-bottom: 20px;">
-        <img src="cid:logoMyLuxZen" alt="MyLuxZen Logo" style="width: 100px;" />
+        <img src="https://res.cloudinary.com/dckxtm6bz/image/upload/v1744015230/my_project_assets/siqkwnyza1v8goqhkpuu.png" alt="MyLuxZen Logo" style="width: 100px;" />
       </div>
 
       <h2 style="color: #116769;">Ihre Anfrage bei MyLuxZen</h2>
@@ -79,16 +91,13 @@ export const sendEmailToClient = async ({ to, subject, text, bookingLink = null 
 
       <div style="font-size: 14px; color: #555; line-height: 1.6;">
         <p><strong>Telefon:</strong> +66 2 123 4567</p>
-        <p><strong>Website:</strong> <a href="https://myluxzen.com" target="_blank" style="color: #116769;">www.myluxzen.com</a></p>
+        <p><strong>Website:</strong> <a href="${BASE_URL}" target="_blank" style="color: #116769;">www.myluxzen.com</a></p>
         <p>
-
-  <p>
-  <strong>E-Mail:</strong> 
-  <a href="${BASE_URL}/?contact=open" target="_blank" style="color: #116769; text-decoration: none;">
-    info@myluxzen.com
-  </a>
-</p>
-  
+          <strong>E-Mail:</strong> 
+          <a href="${BASE_URL}/?contact=open" target="_blank" style="color: #116769; text-decoration: none;">
+            info@myluxzen.com
+          </a>
+        </p>
       </div>
 
       <hr style="margin: 30px 0;" />

@@ -129,6 +129,10 @@ const BookingDetails = () => {
   {/* Ladezustand */}
   {loading ? (
         <p className="text-gray-600 text-center">⏳ Lade Buchungen...</p>
+      ) : error ? (
+        <div className="p-6 bg-[#fff2f2] text-[#a94442] border border-[#ebccd1] rounded-lg text-center max-w-2xl mx-auto mb-10 shadow-md">
+          <p className="font-semibold">{error}</p>
+        </div>
       ) : bookings.length === 0 ? (
         <div className="p-10 bg-[#f8f9fa] text-center rounded-2xl shadow-md border border-gray-200 max-w-2xl mx-auto mt-10">
   <h3 className="text-xl font-semibold text-[#0e5756]" style={{ fontFamily: "Merriweather, serif" }}>

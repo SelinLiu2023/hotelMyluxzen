@@ -34,9 +34,21 @@
 .slide-down{
   animation: slideDown 0.5s ease-out forwards;
 }
-.datePickerCalendar {
+/* .datePickerCalendar {
   transform: scale(1.5);
   transform-origin: top center; 
   margin: auto; 
+} */
+
+.datePickerCalendar {
+  transform: scale(1.2); 
+  transform-origin: top center;
+  margin: auto;
+}
+
+@media (min-width: 768px) {
+  .datePickerCalendar {
+    transform: scale(1.5);
+  }
 }
 

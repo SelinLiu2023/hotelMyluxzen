@@ -144,7 +144,7 @@ export const HouseSelect = ({ newBooking, setNewBooking, gotoNextStep, setStepCo
 
     return (
     <div>
-      <div className="text-2xl py-2 text-gray-700 font-bold">
+      <div className="text-2xl mb-4 text-gray-700 font-bold">
           Häuser
       </div>
       <h2 className="pb-1">

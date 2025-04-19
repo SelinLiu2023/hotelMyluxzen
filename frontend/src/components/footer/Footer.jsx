@@ -37,11 +37,13 @@ const Footer = () => {
             <ul className="text-off-white space-y-3">
               {[
                 { name: "Home", path: "/" },
+                { name: "Buchen", path: "/booking" },
                 { name: "Galerie", path: "/gallerie" },
                 { name: "Unsere Villen", path: "/HausBeschreibung" },
-                { name: "Über uns", path: "/about" },
+                { name: "Aktivitäten", path: "/activities" },
                 { name: "Reviews", path: "/reviews" },
-                { name: "AGB", path: "/agb" },
+                { name: "Über uns", path: "/about" },
+                { name: "AGB", path: "/Agreement" },
               ].map((link, index) => (
                 <li key={index}>
                   <Link

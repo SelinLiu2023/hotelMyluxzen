@@ -30,7 +30,7 @@ router.post("/create-booking", [createBookingMiddleware, houseReserve], (req, re
 
     const toGuestEmail = req.result.email;
     const emailSubject = "Buchung erstellt erfolgreich";
-    const bookingLink = `http://localhost:5173/booking/${req.result.bookingNumber}`;
+    const bookingLink = `https://myluxzen.onrender.com/booking/${req.result.bookingNumber}`;
     const text = `Sie haben erfolgreich das Haus ${req.result.houseTitle} gebucht, für den Zeitraum von ${req.result.startDate.toLocaleString()} bis ${req.result.endDate.toLocaleString()} Sie werden bei uns angenehme ${req.result.totalDays}  Tage verbringen. \n
     Ihre Buchungsnummer lautet:${req.result.bookingNumber}.\n
     `;
@@ -53,7 +53,7 @@ router.put("/cancel-or-checkout/:bookingNum", [bookingCheckoutOrCancel, houseChe
     if(req.result.status === "Canceled"){
         const toGuestEmail = req.result.email;// add email for cancel email 
         const emailSubject = "Buchung storniert erfolgreich";
-        const bookingLink = `http://localhost:5173/booking/${req.result.bookingNum}`;
+        const bookingLink = `https://myluxzen.onrender.com/booking/${req.result.bookingNum}`;
         const text = `Sie haben erfolgreich ${req.result.bookingNum} storniert. \n`;
         // console.log("sendEmailToClient, toGuestEmail",toGuestEmail)
         // console.log("sendEmailToClient, emailSubject",emailSubject)

@@ -18,9 +18,9 @@ export const SummeryBar = ({ newBooking })=>{
         setShowCompleteSummery(prev=> !prev);
     };
     return (
-    <div className="flex flex-col text-base text-gray-700">
+    <div className="flex flex-col text-base text-gray-700 mb-1">
         <div className={`flex gap-1 ${showCompleteSummery ? "slide-up" : "slide-down"} bg-gray-100 shadow pb-2`}>
-            <Summery newBooking={newBooking} completed={true} />
+            <Summery newBooking={newBooking} completed={false} />
             <div className="relative px-6 flex-1">
                 <button 
                     onClick={handleOnClick} 
@@ -34,7 +34,7 @@ export const SummeryBar = ({ newBooking })=>{
             <div className={`flex ${showCompleteSummery ? "slide-down" : "slide-up"} justify-between bg-gray-100 shadow py-2`}>
                 <div className="flex justify-between flex-10 px-2">
                     <div className="text-lg font-bold">
-                        Reservierungszusammenfassung
+                        Summary
                     </div>
                     <div className="flex items-center text-lg font-bold">
                         <MdOutlineEuro />

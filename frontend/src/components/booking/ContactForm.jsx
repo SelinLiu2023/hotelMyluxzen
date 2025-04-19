@@ -36,7 +36,8 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
               onChange={handleChange}
               onFocus={() => handleFocus("email")}
               onBlur={() => handleBlur("email")}
-              className="mt-1 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+              className="mt-2 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+              maxLength={50}
             />
             <button
               type="button"
@@ -53,8 +54,8 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
             <p className="text-transparent text-sm">Placeholder</p>
         )}
       </div>
-      <div className="flex space-x-4">
-        <div className="flex-1">
+      <div className="flex flex-col md:flex-row w-full space-y-2 md:space-x-4">
+        <div className="flex-1 w-full">
             <div className={`relative border rounded-lg  ${focusedField === "guestFirstName"  ? "border-gray-700" : (errFirstName? "border-[#9C785E] " : "border-gray-300")} p-2`}>
               <label 
                 htmlFor="guestFirstName" 
@@ -70,7 +71,8 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
                 onChange={handleChange}
                 onFocus={() => handleFocus("guestFirstName")}
                 onBlur={() => handleBlur("guestFirstName")}
-                className="mt-1 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+                className="mt-2 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+                maxLength={30}
               />
               <button
                 type="button"
@@ -87,7 +89,7 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
                 <p className="text-transparent text-sm">Placeholder</p>
             )}
         </div>
-        <div className="flex-1">
+        <div className="flex-1 w-full">
           <div className={`relative border rounded-lg  ${focusedField === "guestFamilyName"  ? "border-gray-700" : (errLastName ? "border-[#9C785E] " : "border-gray-300")} p-2`}>
             <label 
               htmlFor="guestFamilyName" 
@@ -103,7 +105,8 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
               onChange={handleChange}
               onFocus={() => handleFocus("guestFamilyName")}
               onBlur={() => handleBlur("guestFamilyName")}
-              className="mt-1 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+              className="mt-2 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+              maxLength={30}
             />
             <button
               type="button"
@@ -136,7 +139,8 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
           onChange={handleChange}
           onFocus={() => handleFocus("mobileNumber")}
           onBlur={() => handleBlur("mobileNumber")}
-          className="mt-1 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+          className="mt-2 block w-full pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+          maxLength={30}
         />
         <button
           type="button"
@@ -160,9 +164,10 @@ export function ContactForm({newBooking, setNewBooking, errEmail, errFirstName, 
           onChange={handleChange}
           onFocus={() => handleFocus("comments")}
           onBlur={() => handleBlur("comments")}
-          className="mt-1 block w-11/12 pl-2 pr-8 py-2 bg-transparent focus:outline-none"
+          className="mt-2 block w-11/12 pl-2 pr-8 py-2 bg-transparent focus:outline-none"
           rows="6"
           style={{ resize: "none", overflow: "auto" }}
+          maxLength={300}
         />
         <button
           type="button"

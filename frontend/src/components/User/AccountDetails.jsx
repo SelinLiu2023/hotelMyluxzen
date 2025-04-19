@@ -82,7 +82,16 @@ const AccountDetails = () => {
                 body: JSON.stringify(formData),
             });
 
-            const data = await response.json();
+            let data = null;
+
+        try {
+            data = await response.json(); // Versuche, die Antwort als JSON zu lesen
+        } catch (jsonError) {
+            console.error("Antwort ist kein gültiges JSON:", jsonError);
+            setErrors({ general: "Unerwartete Serverantwort. Bitte versuche es später erneut." });
+            return;
+        }
+
 
             if (response.ok) {
                 setUser(data.user);

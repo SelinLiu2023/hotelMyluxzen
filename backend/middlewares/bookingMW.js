@@ -194,7 +194,7 @@ export const getAvailableHouses = async (req, res, next) => {
             const isInUsePeriodOverlapping = house.inUsePeriods.some(period => {
                 const inUseStartDate = new Date(period.startDate);
                 const inUseEndDate = new Date(period.endDate);
-                const overlapsInUse = inUseStartDate <= requestedEndDate && requestedStartDate <= inUseEndDate;
+                const overlapsInUse = inUseStartDate < requestedEndDate && requestedStartDate < inUseEndDate; // modified for select logic. 04.09
                 return overlapsInUse;
             });
         

@@ -150,8 +150,10 @@ const AdminEmailSupportClient = () => {
 
         {/* Antwort Modal */}
         {selectedMessage && (
-          <div className="fixed inset-0 bg-white/30 backdrop-blur-sm flex items-center justify-center z-50">
-            <div className="bg-white p-6 rounded-3xl w-[90%] max-w-md relative text-teal-dark shadow-xl">
+         <div className="fixed inset-0 bg-white/30 backdrop-blur-sm z-50">
+         <div className="absolute top-1/2 left-[calc(50%+40px)] transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-3xl w-[70%] max-w-2xl sm:max-w-xl md:max-w-2xl xl:max-w-3xl max-h-[90vh] overflow-y-auto text-teal-dark shadow-xl">
+    
+
               <button
                 onClick={() => setSelectedMessage(null)}
                 className="absolute top-4 right-5 text-gray-700 hover:text-red-500 text-xl"

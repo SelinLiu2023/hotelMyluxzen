@@ -3,7 +3,7 @@ import React from "react";
 export const ProcessBar = ({ step, setStep }) => {
     const steps = ["Datum", "Häuser", "Kontakt", "Zahlung"];
     return (
-    <div  className="py-10 px-12" >
+    <div  className="pt-10 pb-4 px-2" >
         <div className="flex items-center space-x-4">
             {steps.map((label, index) => {
                 const isActive = step >= index + 1;

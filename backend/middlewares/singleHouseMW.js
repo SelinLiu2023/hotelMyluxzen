@@ -15,10 +15,10 @@ export const getHouseByNum =async(req,res,next)=>{
     }
 };
 
-export const getHousesforCheckinOrReserve = async(req,res,next)=>{
+export const getHousesforCheckin = async(req,res,next)=>{
     const {houseType} = req.params;
     const { bookingNum, startDate, endDate, guestName, houseNum, reserved} = req.body;
-    console.log("GET request to getHousesforCheckinOrReserve, houseType", houseType); 
+    console.log("GET request to getHousesforCheckin, houseType", houseType); 
     //if this house is already reserved, direct go to next middleware
     if(reserved){
         next();
@@ -28,22 +28,22 @@ export const getHousesforCheckinOrReserve = async(req,res,next)=>{
 
         const requestedStartDate = new Date(startDate);
         const requestedEndDate = new Date(endDate);
-        // console.log("getHousesforCheckinOrReserve, req.body", req.body);
-        // console.log("getHousesforCheckinOrReserve, houseType", houseType);
+        console.log("getHousesforCheckin, req.body", req.body);
+        console.log("getHousesforCheckin, houseType", houseType);
         const houses = await SingleHouse.find({
             houseType: houseType,
             // choose houseType suitable and not Occupied houses
             bookingNum: { $eq: ""} // add for single house select for booking (not checkedin)
         });
-        // console.log("getHousesforCheckinOrReserve, houses.length", houses.length);
+        console.log("getHousesforCheckin, houses.length", houses.length);
 
         const availableHouses = houses.filter(house => {
             // houses can"t have overlap with inUsePeriods(admin reserve for other use) or with bookingReservePeriods(reserved for booking guest)
             const isInUseOverlapping = house.inUsePeriods.some(period => {
                 const inUseStartDate = new Date(period.startDate);
                 const inUseEndDate = new Date(period.endDate);
-                return inUseStartDate <= requestedEndDate && requestedStartDate <= inUseEndDate;
-            });
+                return inUseStartDate < requestedEndDate && requestedStartDate < inUseEndDate;
+            });// modified 04.08, for lastday can be used.
 
             const isBookingReserveOverlapping = house.bookingReservePeriods.some(period => {
                 const reserveStartDate = new Date(period.startDate);
@@ -56,7 +56,59 @@ export const getHousesforCheckinOrReserve = async(req,res,next)=>{
         req.result = availableHouses;
         next();
     } catch (error) {
-        console.log("Error in getHousesforCheckinOrReserve middleware:", error);
+        console.log("Error in getHousesforCheckin middleware:", error);
+        next(error);
+    }
+}
+
+export const getHousesforReserve = async(req,res,next)=>{
+    const {houseType} = req.params;
+    const { bookingNum, startDate, endDate, guestName, houseNum, reserved} = req.body;
+    console.log("GET request to getHousesforReserve, houseType", houseType); 
+    //if this house is already reserved, direct go to next middleware
+    if(reserved){
+        next();
+        return;
+    }
+    try {
+
+        const requestedStartDate = new Date(startDate);
+        const requestedEndDate = new Date(endDate);
+        console.log("getHousesforReserve, req.body", req.body);
+        console.log("getHousesforReserve, houseType", houseType);
+        const houses = await SingleHouse.find({
+            houseType: houseType,
+            // choose houseType suitable and not Occupied houses
+            // bookingNum: { $eq: ""} 
+        });
+        console.log("getHousesforReserve, houses.length", houses.length);
+
+        const availableHouses = houses.filter(house => {
+            // houses can"t have overlap with inUsePeriods(admin reserve for other use) or with bookingReservePeriods(reserved for booking guest)
+            const isInUseOverlapping = house.inUsePeriods.some(period => {
+                const inUseStartDate = new Date(period.startDate);
+                const inUseEndDate = new Date(period.endDate);
+                return inUseStartDate < requestedEndDate && requestedStartDate < inUseEndDate;
+            });// modified 04.08, for lastday can be used.
+
+            const isBookingReserveOverlapping = house.bookingReservePeriods.some(period => {
+                const reserveStartDate = new Date(period.startDate);
+                const reserveEndDate = new Date(period.endDate);
+                return requestedEndDate > reserveStartDate  && requestedStartDate < reserveEndDate;
+            });
+            //add for checkined house will not be available for reserve.
+            let isCheckedinRangeOverlapping = false;
+                if (house.bookingNum) {
+                    const houseStartDate = new Date(house.startDate);
+                    const houseEndDate = new Date(house.endDate);
+                    isCheckedinRangeOverlapping = requestedEndDate > houseStartDate && requestedStartDate < houseEndDate;
+                }
+            return !isInUseOverlapping && !isBookingReserveOverlapping && !isCheckedinRangeOverlapping;
+        });
+        req.result = availableHouses;
+        next();
+    } catch (error) {
+        console.log("Error in getHousesforReserve middleware:", error);
         next(error);
     }
 }

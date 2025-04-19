@@ -74,7 +74,7 @@ export function DateRangePicker({ newBooking, setNewBooking, errStartDate, errEn
   };
 
   return (
-  <div className="flex flex-col lg:flex-row w-full justify-start lg:justify-between space-y-4 lg:space-y-0 lg:space-x-4">
+  <div className="flex flex-col lg:flex-row w-full justify-start lg:justify-between space-y-8 lg:space-y-0 lg:space-x-4">
     <div 
       onFocus={() => handleFocus("startDate")} 
       className={`bg-white p-1 border rounded-lg shadow px-4 py-1 lg:flex-1 ${focusedField === "startDate"  ? "border-gray-700" : (errStartDate ? "border-[#9C785E] " : "border-gray-300")}`} 

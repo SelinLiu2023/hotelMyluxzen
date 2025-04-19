@@ -1,0 +1,16 @@
+/* Corrige bugs de scroll et taille sur iOS */
+html,
+body {
+  height: auto;
+  min-height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Sécurité supplémentaire sur les images */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}

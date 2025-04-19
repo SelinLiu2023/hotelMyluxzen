@@ -31,7 +31,7 @@ export const DateSelect = ({ newBooking, setNewBooking, gotoNextStep, setStepCom
     },[focusedField]);
     return (
     <div>
-        <div className="text-2xl py-2 text-gray-700 font-bold">
+        <div className="text-2xl mb-4 text-gray-700 font-bold">
             Datum
         </div>
         <div className="w-full space-y-4">

@@ -83,8 +83,8 @@ const registerUser = async (req, res, next) => {
             res.cookie("jwt", token, { 
                 httpOnly: true,
                // secure: process.env.NODE_ENV === "production",
-                secure: true,
-                sameSite: "strict",
+               sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+               secure: process.env.NODE_ENV === "production",
                 maxAge: 30 * 24 * 60 * 60 * 1000 // 30 Tage
             });
 
@@ -126,8 +126,8 @@ const authUser = async (req, res, next) => {
         res.cookie("jwt", token, {
         httpOnly: true, 
         // secure: process.env.NODE_ENV === "production", 
-        secure:true,
-        sameSite: "strict",
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+        secure: process.env.NODE_ENV === "production",
          maxAge: 30 * 24 * 60 * 60 * 1000
          });
          res.status(201).json({ 
@@ -151,8 +151,12 @@ const logoutUser = (req, res, next) => {
     try {
         res.cookie("jwt", "", { 
             httpOnly: true, 
+            sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            secure: process.env.NODE_ENV === "production",
             expires: new Date(0) 
         });
+
+    res.set("Cache-Control", "no-store"); 
         res.json({ message: "Logout erfolgreich" });
     } catch (error) {
         next(error);
@@ -160,10 +164,14 @@ const logoutUser = (req, res, next) => {
 };
 //  Benutzerprofil abrufen
 const getUserProfile = async (req, res, next) => {
+    console.log("Session-Check Cookie:", req.cookies.jwt);
+    console.log("User im req:", req.user);
+
     try {
         if (!req.user) {
             return res.status(401).json({ message: "Nicht autorisiert" });
         }
+        res.set("Cache-Control", "no-store");
         res.json({
             _id: req.user._id,
             vorname: req.user.vorname,
@@ -292,27 +300,42 @@ export const googleAuth = passport.authenticate("google", {
 export const googleCallback = (req, res, next) => {
     passport.authenticate("google", async (err, user, info) => {
       if (err || !user) {
-        console.log("❌ Google Auth fehlgeschlagen oder abgebrochen.");
-        return res.redirect("http://localhost:5173/auth?register=false&error=google_failed");
+        return res.send(`
+          <script>
+            window.opener.postMessage('error', '${process.env.CLIENT_URL}');
+            window.close();
+          </script>
+        `);
       }
   
       req.login(user, (loginErr) => {
         if (loginErr) {
-          return res.redirect("http://localhost:5173/auth?register=false&error=google_failed");
+          return res.send(`
+            <script>
+              window.opener.postMessage('error', '${process.env.CLIENT_URL}');
+              window.close();
+            </script>
+          `);
         }
   
         const token = generateToken(user._id);
         res.cookie("jwt", token, {
           httpOnly: true,
           secure: true,
-          sameSite: "strict",
+          sameSite: "None",
           maxAge: 30 * 24 * 60 * 60 * 1000,
         });
   
-        return res.redirect("http://localhost:5173");
+        return res.send(`
+          <script>
+            window.opener.postMessage('success', '${process.env.CLIENT_URL}');
+            window.close();
+          </script>
+        `);
       });
     })(req, res, next);
   };
+  
   
 
 
@@ -320,28 +343,32 @@ export const googleAuthSuccess = (req, res) => {
     try {
         if (!req.user) {
             // Authentifizierung fehlgeschlagen oder abgebrochen
-            return res.redirect("http://localhost:5173/auth?register=false&error=google_failed");
+            return res.redirect(`${process.env.CLIENT_URL}/auth?register=false&error=google_failed`);
         }
 
         const token = generateToken(req.user._id);
         res.cookie("jwt", token, {
             httpOnly: true,
+            //sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+            //secure: process.env.NODE_ENV === "production",
             secure: true,
-            sameSite: "strict",
+            sameSite: "None",
             maxAge: 30 * 24 * 60 * 60 * 1000,
         });
 
-        res.redirect("http://localhost:5173");
+        res.redirect(`${process.env.CLIENT_URL}`);
     } catch (error) {
-        res.redirect("http://localhost:5173/auth?register=false&error=google_error");
+        res.redirect(`${process.env.CLIENT_URL}auth?register=false&error=google_error`);
     }
 };
 
 const logoutAndRedirectToGoogle = (req, res) => {
     res.clearCookie("jwt", {
         httpOnly: true,
+       // sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+       //secure: process.env.NODE_ENV === "production",
         secure: true,
-        sameSite: "strict"
+        sameSite: "None",
     });
 
     // Danach zur Google-Auth weiterleiten
