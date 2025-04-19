@@ -24,9 +24,10 @@ export function AdminPage() {
     return <div className="text-center p-10 text-xl">Admin-Bereich wird geladen...</div>;
   }
 
-  if (!loading && (!user || !user.isAuthenticated || !user.isAdmin)) {
-    return <Navigate to="/" replace />;
-  }
+  // for showing admin page , here we dont navigate to home. modified by Xiangyu, 04-19
+  // if (!loading && (!user || !user.isAuthenticated || !user.isAdmin)) {
+  //   return <Navigate to="/" replace />;
+  // }
 
   const links = [
     { to: "bookings-manage", label: "BuchungsVerhandlung", icon: Book },
