@@ -36,7 +36,7 @@ app.use(express.urlencoded({ extended: true })); // ✅ Formulardaten parsen
 app.use(cookieParser());
 
 const allowedOrigins = [
-  "https://myluxzen.onrender.com",
+  "https://hotelmyluxzen.onrender.com",
   "http://localhost:5173",
 ];
 
